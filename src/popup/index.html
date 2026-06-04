@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./index.css" />
+    <title>Exam Question Extractor</title>
+  </head>
+  <body>
+    <main>
+      <header class="app-header">
+        <div>
+          <p class="eyebrow">Live question parser</p>
+          <h1>Exam Question Extractor</h1>
+        </div>
+        <div class="status" id="status">Waiting for HTML</div>
+      </header>
+
+      <div class="mode-bar" aria-label="Input mode">
+        <span>Detect from page</span>
+        <label class="switch">
+          <input id="manualMode" type="checkbox" />
+          <span class="slider" aria-hidden="true"></span>
+          <span>Manual HTML</span>
+        </label>
+      </div>
+
+      <section class="workspace" aria-label="Extractor workspace">
+        <div class="panel is-hidden" id="manualPanel">
+          <div class="panel-header">
+            <label for="htmlInput">Paste HTML</label>
+            <span>manual</span>
+          </div>
+          <textarea
+            id="htmlInput"
+            spellcheck="false"
+            placeholder="Paste the question card HTML here..."
+          ></textarea>
+        </div>
+
+        <div class="panel result-panel">
+          <div class="panel-header">
+            <label for="output">Result</label>
+            <span>updates instantly</span>
+          </div>
+          <pre id="output">Paste HTML to see the extracted question.</pre>
+        </div>
+      </section>
+
+      <div class="actions">
+        <button class="primary" id="copyButton" type="button" disabled>
+          Copy Result
+        </button>
+        <button class="secondary" id="clearButton" type="button">Clear</button>
+      </div>
+      <div class="social-wrapper">
+        <section class="social">
+          <p>
+            <span>Telegram : </span>
+            <a href="https://t.me/yellow_dark88">@yellow_dark88</a>
+          </p>
+          <p>
+            <span>Github : </span>
+            <a href="https://github.com/erfan-goodarzi">erfan-goodarzi</a>
+          </p>
+        </section>
+        <span>Happy to help ❤️</span>
+      </div>
+    </main>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
