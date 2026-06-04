@@ -1,6 +1,6 @@
 <div dir="rtl" align=center>
 
-[**راهنمای فارسی**](README_FA.md) / [**English**](README.md)
+[**راهنمای فارسی**](README_fa.md) / [**English**](README.md)
 
 # Exam Question Extractor
 
