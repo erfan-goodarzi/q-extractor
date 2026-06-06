@@ -4,6 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="./index.css" />
+    <link
+      href="https://unpkg.com/light-icons/dist/light-icon.css"
+      rel="stylesheet"
+    />
     <title>Exam Question Extractor</title>
   </head>
   <body>
@@ -43,6 +47,9 @@
             <label for="output">Result</label>
             <span>updates instantly</span>
           </div>
+          <button class="copyBtn" id="copyButton">
+            <i class="light-icon-copy copy-icon"></i>
+          </button>
           <pre id="output">Paste HTML to see the extracted question.</pre>
         </div>
       </section>

@@ -327,6 +327,21 @@ button:disabled {
   box-shadow: 0 8px 26px rgba(23, 32, 51, 0.08);
 }
 
+.copyBtn {
+  width: max-content;
+  background-color: transparent;
+  padding: 0;
+}
+
+.copyBtn i {
+  font-size: 22px !important;
+  cursor: pointer;
+}
+
+.tick-icon {
+  color: #56b900 !important;
+}
+
 @media (max-width: 820px) {
   body {
     min-width: 360px;
@@ -387,5 +402,9 @@ button:disabled {
   .social {
     flex-direction: column;
     gap: 0;
+  }
+
+  .copyBtn {
+    font-size: 10px;
   }
 }

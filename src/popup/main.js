@@ -182,11 +182,16 @@ copyButton.addEventListener('click', async () => {
   if (!output.textContent.trim()) {
     return;
   }
+  const hasIcon = copyButton.innerHTML.includes('light-icon');
 
   await navigator.clipboard.writeText(output.textContent);
   copyButton.textContent = 'Copied';
   setTimeout(() => {
-    copyButton.textContent = 'Copy Result';
+    if (hasIcon) {
+      copyButton.innerHTML = `<i class="light-icon-clipboard-check tick-icon"></i>`;
+    } else {
+      copyButton.textContent = 'Copy Result';
+    }
   }, 1200);
 });
 
