@@ -1,3 +1,5 @@
+import { mlLatexToText, parseMLContent, trimText } from './math';
+
 const htmlInput = document.getElementById('htmlInput');
 const output = document.getElementById('output');
 const statusBadge = document.getElementById('status');
@@ -10,41 +12,37 @@ const emptyAutoMessage = '';
 const emptyManualMessage = 'Paste HTML to see the extracted question';
 const noQuestionMessage = 'No question found';
 
-function trimText(text) {
-  return text.replace(/\s+/g, ' ').trim();
-}
-
 function getTextWithoutControls(element) {
   const clone = element.cloneNode(true);
   clone
-    .querySelectorAll('input, button, select, textarea, span')
-    .forEach((node) => {
-      node.remove();
-    });
+    .querySelectorAll('input, button, select, textarea, span.ML__sr-only')
+    .forEach((n) => n.remove());
+
+  clone.querySelectorAll('.ML__latex').forEach((ml) => {
+    const text = mlLatexToText(ml);
+    ml.replaceWith(document.createTextNode(text));
+  });
 
   return trimText(clone.textContent);
 }
 
 function extractQuestion(html) {
   const doc = new DOMParser().parseFromString(html, 'text/html');
-
   const card = [...doc.querySelectorAll('.card-body')].find((el) =>
     el.querySelector('.h5'),
   );
-
   if (!card) return noQuestionMessage;
 
   const questionElement = card.querySelector('.h5');
-  const question = trimText(questionElement?.textContent || '');
-
+  const question = parseMLContent(questionElement, doc);
   if (!question) return noQuestionMessage;
 
   const answers = [...card.querySelectorAll('.test-option')].map(
     (option, index) => {
-      const answer = trimText(
-        option.querySelector('p')?.textContent ||
-          getTextWithoutControls(option),
-      );
+      const p = option.querySelector('p');
+      const answer = p
+        ? parseMLContent(p, doc)
+        : getTextWithoutControls(option);
       return `${index + 1}) ${answer}`;
     },
   );
